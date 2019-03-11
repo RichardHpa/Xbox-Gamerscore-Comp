@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+.container{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container:after{
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.half{
+    padding: 30px;
+    color: white;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.rich{
+    background-color: #2980b9;
+}
+
+.james{
+    text-align: right;
+    background-color: #c0392b;
+}
+
+#chart_div{
+    border-bottom: 5px solid white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: flex-end;
+
+}
+
+#richard{
+    background-color: #c0392b;
+}
+
+#james{
+        background-color: #2980b9;
+}
+
+#richard,
+#james{
+    height: 0;
+    width: 300px;
+    transition: height 1s ease-in-out;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
