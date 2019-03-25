@@ -38,11 +38,9 @@ var james = {
 };
 
 google.charts.load('current', {packages: ['corechart', 'bar']});
-// google.charts.setOnLoadCallback(getKeys);
-google.charts.setOnLoadCallback(drawCharts);
+google.charts.setOnLoadCallback(getKeys);
 
 function getKeys(){
-    console.log('get keys');
     $.ajax({
         url: 'config.json',
         type: 'get',
@@ -58,7 +56,6 @@ function getKeys(){
 
 
 function getRichardData(){
-    console.log("richard function");
     $.ajax({
         url: 'https://xboxapi.com/v2/'+keys['RichardID']+'/gamercard',
         type: "GET",
@@ -68,7 +65,6 @@ function getRichardData(){
             'X-AUTH': keys['XboxAPIKEY'],
         },
         success: function (res) {
-            console.log("rich");
             richard = res;
             getJamesData();
         },
@@ -79,7 +75,6 @@ function getRichardData(){
 }
 
 function getJamesData(){
-    console.log("james function");
     $.ajax({
         url: 'https://xboxapi.com/v2/'+keys['JamesID']+'/gamercard',
         type: "GET",
@@ -89,7 +84,6 @@ function getJamesData(){
             'X-AUTH': keys['XboxAPIKEY'],
         },
         success: function (res) {
-            console.log("james");
             james = res;
             drawCharts();
         },
@@ -123,54 +117,4 @@ function drawCharts(){
     $("#richard").find('h3').text(currentScores['richardScore']);
     $("#james").find('h3').text(currentScores['jamesScore']);
 
-
-
-    console.log($("#richard").height());
-
-
-    // console.log(currentScores);
-    // var dataTable = new google.visualization.DataTable();
-    // dataTable.addColumn("string", "Player");
-    // dataTable.addColumn("number", "Gamerscore");
-    //
-    // dataTable.addRow(['Richard', fixedScores['richardScore']]);
-    // dataTable.addRow(['James', fixedScores['jamesScore']]);
-
-   //
-   //  var dataTable = google.visualization.arrayToDataTable([
-   //    ['Player', 'GamerScore', { role: 'style' }],
-   //    ['Richard', fixedScores['richardScore'], '#c0392b'],            // RGB value
-   //    ['James', fixedScores['jamesScore'], '#2980b9']            // English color name
-   // ]);
-   //
-   //  var options = {
-   //      annotations: {
-   //    alwaysOutside: true
-   //  },
-   //    backgroundColor: 'transparent',
-   //    bars: 'vertical',
-   //    legend: 'none',
-   //    vAxis: {
-   //        baselineColor: 'white' ,
-   //        gridlines: {
-   //            color: 'transparent'
-   //        },
-   //        textStyle: {
-   //            color: 'transparent'
-   //        }
-   //    },
-   //    hAxis: {
-   //      baselineColor: 'transparent' ,
-   //      gridlines: {
-   //          color: 'transparent'
-   //      },
-   //      textStyle: {
-   //          color: 'transparent'
-   //      }
-   //    }
-   //
-   //  };
-   //
-   //  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-   //  chart.draw(dataTable, options);
 }
